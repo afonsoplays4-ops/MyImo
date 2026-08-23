@@ -58,6 +58,7 @@ export interface Contract {
   caucao: number;
   rendasAntecipadas: number;
   fiador: string;
+  estado: EstadoContrato;
   observacoes: string;
   historico: RentChange[];
 }
@@ -359,6 +360,7 @@ export function buildDataset(): Dataset {
       caucao: p.rendaMensal * (rand() > 0.5 ? 2 : 1),
       rendasAntecipadas: rand() > 0.6 ? 1 : 0,
       fiador: rand() > 0.7 ? NOMES[(tenantIdx + 7) % NOMES.length]! : "—",
+      estado: estadoContrato,
       observacoes: "",
       historico,
     });
