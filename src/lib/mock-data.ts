@@ -274,8 +274,8 @@ export function buildDataset(): Dataset {
 
   const TOTAL = 60;
   for (let i = 0; i < TOTAL; i++) {
-    const loc = LOCALIDADES[Math.floor(rand() * LOCALIDADES.length)];
-    const rua = RUAS[i % RUAS.length];
+    const loc = LOCALIDADES[Math.floor(rand() * LOCALIDADES.length)]!;
+    const rua = RUAS[i % RUAS.length]!;
     const numero = 2 + Math.floor(rand() * 180);
     const anoAquisicao = 2005 + Math.floor(rand() * 19);
     const renda = 250 + Math.round((rand() * 500) / 25) * 25;
@@ -294,8 +294,8 @@ export function buildDataset(): Dataset {
       morada: `${rua} ${numero}${rand() > 0.5 ? `, ${1 + Math.floor(rand() * 4)}º Dto` : ""}`,
       codigoPostal: `${loc.cp}-${pad(Math.floor(rand() * 99))}${Math.floor(rand() * 9)}`,
       localidade: loc.nome,
-      tipo: TIPOS[rand() > 0.85 ? 1 + Math.floor(rand() * 3) : 0],
-      tipologia: TIPOLOGIAS[Math.floor(rand() * TIPOLOGIAS.length)],
+      tipo: TIPOS[rand() > 0.85 ? 1 + Math.floor(rand() * 3) : 0]!,
+      tipologia: TIPOLOGIAS[Math.floor(rand() * TIPOLOGIAS.length)]!,
       area,
       anoAquisicao,
       valorAquisicao,
@@ -311,7 +311,7 @@ export function buildDataset(): Dataset {
   let tenantIdx = 0;
   properties.forEach((p, i) => {
     if (p.estado !== "Arrendado") return;
-    const nome = `${NOMES[tenantIdx % NOMES.length]}${tenantIdx >= NOMES.length ? " Jr." : ""}`;
+    const nome = `${NOMES[tenantIdx % NOMES.length]!}${tenantIdx >= NOMES.length ? " Jr." : ""}`;
     const tenantId = `t${tenantIdx + 1}`;
     const anoInicio = Math.max(p.anoAquisicao, 2018 + Math.floor(rand() * 7));
     const mesInicio = Math.floor(rand() * 12);
@@ -358,7 +358,7 @@ export function buildDataset(): Dataset {
       rendaAtual: p.rendaMensal,
       caucao: p.rendaMensal * (rand() > 0.5 ? 2 : 1),
       rendasAntecipadas: rand() > 0.6 ? 1 : 0,
-      fiador: rand() > 0.7 ? NOMES[(tenantIdx + 7) % NOMES.length] : "—",
+      fiador: rand() > 0.7 ? NOMES[(tenantIdx + 7) % NOMES.length]! : "—",
       observacoes: "",
       historico,
     });
@@ -370,7 +370,7 @@ export function buildDataset(): Dataset {
         if (ano < anoInicio || (ano === anoInicio && mes < mesInicio)) continue;
         const futuro = ano > ANO_ATUAL || (ano === ANO_ATUAL && mes > MES_ATUAL);
         const previsto =
-          ano < historico[historico.length - 1].ano ? rendaInicial : p.rendaMensal;
+          ano < historico[historico.length - 1]!.ano ? rendaInicial : p.rendaMensal;
         if (futuro) {
           payments.push({
             id: `pay-${p.id}-${ano}-${mes}`,
@@ -421,7 +421,7 @@ export function buildDataset(): Dataset {
           recebido,
           estado,
           dataPagamento: recebido > 0 ? `${ano}-${pad(mes + 1)}-${pad(dia)}` : null,
-          metodo: recebido > 0 ? METODOS[Math.floor(rand() * 4)] : null,
+          metodo: recebido > 0 ? METODOS[Math.floor(rand() * 4)]! : null,
           notas: "",
           comprovativo: null,
         });
@@ -435,7 +435,7 @@ export function buildDataset(): Dataset {
     for (let k = 0; k < nDesp; k++) {
       const ano = ANO_ATUAL - Math.floor(rand() * 2.5);
       const mes = Math.floor(rand() * (ano === ANO_ATUAL ? MES_ATUAL + 1 : 12));
-      const categoria = CATEGORIAS_DESPESA[Math.floor(rand() * CATEGORIAS_DESPESA.length)];
+      const categoria = CATEGORIAS_DESPESA[Math.floor(rand() * CATEGORIAS_DESPESA.length)]!;
       const base =
         categoria === "IMI" ? 120 + rand() * 400 : categoria === "Obras" ? 400 + rand() * 3000 : 30 + rand() * 320;
       expenses.push({
@@ -444,7 +444,7 @@ export function buildDataset(): Dataset {
         data: `${ano}-${pad(mes + 1)}-${pad(1 + Math.floor(rand() * 27))}`,
         categoria,
         descricao: `${categoria} — ${p.ref}`,
-        fornecedor: FORNECEDORES[Math.floor(rand() * FORNECEDORES.length)],
+        fornecedor: FORNECEDORES[Math.floor(rand() * FORNECEDORES.length)]!,
         valor: Math.round(base),
         recorrente: categoria === "Condomínio" || categoria === "Seguro",
       });
@@ -463,24 +463,24 @@ export function buildDataset(): Dataset {
     "Impermeabilização de terraço",
   ];
   for (let k = 0; k < 26; k++) {
-    const p = properties[Math.floor(rand() * properties.length)];
+    const p = properties[Math.floor(rand() * properties.length)]!;
     const estados = ["Aberto", "Em curso", "Concluído"] as const;
-    const estado = estados[k % 3 === 0 ? Math.floor(rand() * 2) : 2];
+    const estado = estados[k % 3 === 0 ? Math.floor(rand() * 2) : 2]!;
     const custoPrevisto = Math.round((200 + rand() * 4000) / 10) * 10;
     const ano = ANO_ATUAL - (rand() > 0.6 ? 1 : 0);
     const mes = Math.floor(rand() * 12);
     works.push({
       id: `w${k + 1}`,
       propertyId: p.id,
-      titulo: TITULOS[Math.floor(rand() * TITULOS.length)],
+      titulo: TITULOS[Math.floor(rand() * TITULOS.length)]!,
       categoria: rand() > 0.5 ? "Manutenção" : "Obra",
-      prioridade: (["Baixa", "Média", "Alta"] as const)[Math.floor(rand() * 3)],
+      prioridade: (["Baixa", "Média", "Alta"] as const)[Math.floor(rand() * 3)]!,
       estado,
       custoPrevisto,
       custoReal: estado === "Concluído" ? Math.round(custoPrevisto * (0.85 + rand() * 0.4)) : 0,
       abertura: `${ano}-${pad(mes + 1)}-${pad(1 + Math.floor(rand() * 27))}`,
       fecho: estado === "Concluído" ? `${ano}-${pad(Math.min(12, mes + 2))}-15` : null,
-      responsavel: FORNECEDORES[Math.floor(rand() * FORNECEDORES.length)],
+      responsavel: FORNECEDORES[Math.floor(rand() * FORNECEDORES.length)]!,
     });
   }
 
@@ -488,7 +488,7 @@ export function buildDataset(): Dataset {
   properties.forEach((p, i) => {
     const n = 2 + Math.floor(rand() * 3);
     for (let k = 0; k < n; k++) {
-      const tipo = TIPOS_DOCUMENTO[Math.floor(rand() * TIPOS_DOCUMENTO.length)];
+      const tipo = TIPOS_DOCUMENTO[Math.floor(rand() * TIPOS_DOCUMENTO.length)]!;
       const temValidade = tipo === "Seguro" || tipo === "Certificado energético" || tipo === "Licença";
       documents.push({
         id: `d${i}-${k}`,
