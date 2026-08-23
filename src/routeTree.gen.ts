@@ -10,33 +10,219 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContratosRouteImport } from './routes/contratos'
+import { Route as DefinicoesRouteImport } from './routes/definicoes'
+import { Route as DespesasRouteImport } from './routes/despesas'
+import { Route as DocumentosRouteImport } from './routes/documentos'
+import { Route as IaRouteImport } from './routes/ia'
+import { Route as InquilinosRouteImport } from './routes/inquilinos'
+import { Route as MaisRouteImport } from './routes/mais'
+import { Route as NotificacoesRouteImport } from './routes/notificacoes'
+import { Route as ObrasRouteImport } from './routes/obras'
+import { Route as PatrimonioRouteImport } from './routes/patrimonio'
+import { Route as RelatoriosRouteImport } from './routes/relatorios'
+import { Route as RendasRouteImport } from './routes/rendas'
+import { Route as ImoveisIndexRouteImport } from './routes/imoveis.index'
+import { Route as ImoveisIdRouteImport } from './routes/imoveis.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContratosRoute = ContratosRouteImport.update({
+  id: '/contratos',
+  path: '/contratos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DefinicoesRoute = DefinicoesRouteImport.update({
+  id: '/definicoes',
+  path: '/definicoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DespesasRoute = DespesasRouteImport.update({
+  id: '/despesas',
+  path: '/despesas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentosRoute = DocumentosRouteImport.update({
+  id: '/documentos',
+  path: '/documentos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IaRoute = IaRouteImport.update({
+  id: '/ia',
+  path: '/ia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InquilinosRoute = InquilinosRouteImport.update({
+  id: '/inquilinos',
+  path: '/inquilinos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MaisRoute = MaisRouteImport.update({
+  id: '/mais',
+  path: '/mais',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificacoesRoute = NotificacoesRouteImport.update({
+  id: '/notificacoes',
+  path: '/notificacoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ObrasRoute = ObrasRouteImport.update({
+  id: '/obras',
+  path: '/obras',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatrimonioRoute = PatrimonioRouteImport.update({
+  id: '/patrimonio',
+  path: '/patrimonio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosRoute = RelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RendasRoute = RendasRouteImport.update({
+  id: '/rendas',
+  path: '/rendas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImoveisIndexRoute = ImoveisIndexRouteImport.update({
+  id: '/imoveis/',
+  path: '/imoveis/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImoveisIdRoute = ImoveisIdRouteImport.update({
+  id: '/imoveis/$id',
+  path: '/imoveis/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contratos': typeof ContratosRoute
+  '/definicoes': typeof DefinicoesRoute
+  '/despesas': typeof DespesasRoute
+  '/documentos': typeof DocumentosRoute
+  '/ia': typeof IaRoute
+  '/inquilinos': typeof InquilinosRoute
+  '/mais': typeof MaisRoute
+  '/notificacoes': typeof NotificacoesRoute
+  '/obras': typeof ObrasRoute
+  '/patrimonio': typeof PatrimonioRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/rendas': typeof RendasRoute
+  '/imoveis/$id': typeof ImoveisIdRoute
+  '/imoveis/': typeof ImoveisIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contratos': typeof ContratosRoute
+  '/definicoes': typeof DefinicoesRoute
+  '/despesas': typeof DespesasRoute
+  '/documentos': typeof DocumentosRoute
+  '/ia': typeof IaRoute
+  '/inquilinos': typeof InquilinosRoute
+  '/mais': typeof MaisRoute
+  '/notificacoes': typeof NotificacoesRoute
+  '/obras': typeof ObrasRoute
+  '/patrimonio': typeof PatrimonioRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/rendas': typeof RendasRoute
+  '/imoveis/$id': typeof ImoveisIdRoute
+  '/imoveis': typeof ImoveisIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contratos': typeof ContratosRoute
+  '/definicoes': typeof DefinicoesRoute
+  '/despesas': typeof DespesasRoute
+  '/documentos': typeof DocumentosRoute
+  '/ia': typeof IaRoute
+  '/inquilinos': typeof InquilinosRoute
+  '/mais': typeof MaisRoute
+  '/notificacoes': typeof NotificacoesRoute
+  '/obras': typeof ObrasRoute
+  '/patrimonio': typeof PatrimonioRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/rendas': typeof RendasRoute
+  '/imoveis/$id': typeof ImoveisIdRoute
+  '/imoveis/': typeof ImoveisIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contratos'
+    | '/definicoes'
+    | '/despesas'
+    | '/documentos'
+    | '/ia'
+    | '/inquilinos'
+    | '/mais'
+    | '/notificacoes'
+    | '/obras'
+    | '/patrimonio'
+    | '/relatorios'
+    | '/rendas'
+    | '/imoveis/$id'
+    | '/imoveis/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contratos'
+    | '/definicoes'
+    | '/despesas'
+    | '/documentos'
+    | '/ia'
+    | '/inquilinos'
+    | '/mais'
+    | '/notificacoes'
+    | '/obras'
+    | '/patrimonio'
+    | '/relatorios'
+    | '/rendas'
+    | '/imoveis/$id'
+    | '/imoveis'
+  id:
+    | '__root__'
+    | '/'
+    | '/contratos'
+    | '/definicoes'
+    | '/despesas'
+    | '/documentos'
+    | '/ia'
+    | '/inquilinos'
+    | '/mais'
+    | '/notificacoes'
+    | '/obras'
+    | '/patrimonio'
+    | '/relatorios'
+    | '/rendas'
+    | '/imoveis/$id'
+    | '/imoveis/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContratosRoute: typeof ContratosRoute
+  DefinicoesRoute: typeof DefinicoesRoute
+  DespesasRoute: typeof DespesasRoute
+  DocumentosRoute: typeof DocumentosRoute
+  IaRoute: typeof IaRoute
+  InquilinosRoute: typeof InquilinosRoute
+  MaisRoute: typeof MaisRoute
+  NotificacoesRoute: typeof NotificacoesRoute
+  ObrasRoute: typeof ObrasRoute
+  PatrimonioRoute: typeof PatrimonioRoute
+  RelatoriosRoute: typeof RelatoriosRoute
+  RendasRoute: typeof RendasRoute
+  ImoveisIdRoute: typeof ImoveisIdRoute
+  ImoveisIndexRoute: typeof ImoveisIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +234,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contratos': {
+      id: '/contratos'
+      path: '/contratos'
+      fullPath: '/contratos'
+      preLoaderRoute: typeof ContratosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/definicoes': {
+      id: '/definicoes'
+      path: '/definicoes'
+      fullPath: '/definicoes'
+      preLoaderRoute: typeof DefinicoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/despesas': {
+      id: '/despesas'
+      path: '/despesas'
+      fullPath: '/despesas'
+      preLoaderRoute: typeof DespesasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documentos': {
+      id: '/documentos'
+      path: '/documentos'
+      fullPath: '/documentos'
+      preLoaderRoute: typeof DocumentosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ia': {
+      id: '/ia'
+      path: '/ia'
+      fullPath: '/ia'
+      preLoaderRoute: typeof IaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inquilinos': {
+      id: '/inquilinos'
+      path: '/inquilinos'
+      fullPath: '/inquilinos'
+      preLoaderRoute: typeof InquilinosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mais': {
+      id: '/mais'
+      path: '/mais'
+      fullPath: '/mais'
+      preLoaderRoute: typeof MaisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notificacoes': {
+      id: '/notificacoes'
+      path: '/notificacoes'
+      fullPath: '/notificacoes'
+      preLoaderRoute: typeof NotificacoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/obras': {
+      id: '/obras'
+      path: '/obras'
+      fullPath: '/obras'
+      preLoaderRoute: typeof ObrasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patrimonio': {
+      id: '/patrimonio'
+      path: '/patrimonio'
+      fullPath: '/patrimonio'
+      preLoaderRoute: typeof PatrimonioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios': {
+      id: '/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof RelatoriosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rendas': {
+      id: '/rendas'
+      path: '/rendas'
+      fullPath: '/rendas'
+      preLoaderRoute: typeof RendasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/imoveis/': {
+      id: '/imoveis/'
+      path: '/imoveis'
+      fullPath: '/imoveis/'
+      preLoaderRoute: typeof ImoveisIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/imoveis/$id': {
+      id: '/imoveis/$id'
+      path: '/imoveis/$id'
+      fullPath: '/imoveis/$id'
+      preLoaderRoute: typeof ImoveisIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContratosRoute: ContratosRoute,
+  DefinicoesRoute: DefinicoesRoute,
+  DespesasRoute: DespesasRoute,
+  DocumentosRoute: DocumentosRoute,
+  IaRoute: IaRoute,
+  InquilinosRoute: InquilinosRoute,
+  MaisRoute: MaisRoute,
+  NotificacoesRoute: NotificacoesRoute,
+  ObrasRoute: ObrasRoute,
+  PatrimonioRoute: PatrimonioRoute,
+  RelatoriosRoute: RelatoriosRoute,
+  RendasRoute: RendasRoute,
+  ImoveisIdRoute: ImoveisIdRoute,
+  ImoveisIndexRoute: ImoveisIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
