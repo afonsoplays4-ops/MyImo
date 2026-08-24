@@ -211,7 +211,10 @@ function ContractDetailDialog({ contract, onClose }: { contract: Contract | null
           <Button
             onClick={() => {
               const valor = Number(novaRenda);
-              if (!valor) return toast.error("Indique a nova renda");
+              if (!valor) {
+                toast.error("Indique a nova renda");
+                return;
+              }
               updateRent(contract.propertyId, valor, motivo, ANO_ATUAL);
               toast.success(`Renda atualizada para ${money(valor)}`);
               onClose();
