@@ -74,7 +74,7 @@ function PatrimonioPage() {
     ordem === "yield"
       ? b.yieldLiquida - a.yieldLiquida
       : ordem === "valor"
-        ? b.valorEstimado - a.valorEstimado
+        ? b.valorAtual - a.valorAtual
         : b.liquido - a.liquido,
   );
 
@@ -192,7 +192,7 @@ function PatrimonioPage() {
                     </Link>
                     <p className="text-xs text-muted-foreground">{p.localidade}</p>
                   </td>
-                  <td className="num px-4 py-3 text-right">{money(p.valorEstimado)}</td>
+                  <td className="num px-4 py-3 text-right">{money(p.valorAtual)}</td>
                   <td className="num px-4 py-3 text-right">{money(p.rendaAnual)}</td>
                   <td className="num px-4 py-3 text-right">{money(p.despesasAnuais)}</td>
                   <td className="num px-4 py-3 text-right">{money(p.liquido)}</td>
