@@ -38,8 +38,29 @@ interface Store extends Dataset {
 
 const StoreContext = createContext<Store | null>(null);
 
+const STORAGE_KEY = "patrimonio.dataset.v1";
+
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<Dataset>(() => buildDataset());
+
+  // Persistência local — só no browser, após hidratação.
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(STORAGE_KEY);
+      if (raw) setData(JSON.parse(raw) as Dataset);
+    } catch {
+      /* ignora dados corrompidos */
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch {
+      /* quota excedida */
+    }
+  }, [data]);
+
 
   const value = useMemo<Store>(() => {
     const update = (patch: Partial<Dataset>) => setData((d) => ({ ...d, ...patch }));
